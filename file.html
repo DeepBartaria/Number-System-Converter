@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number System Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .converter {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .converter h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .converter select, .converter input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .converter button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1bc0ea;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .converter button:hover {
+            background-color: #4cae4c;
+        }
+
+        .converter .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h2>Number System Converter</h2>
+    <select id="conversionType">
+        <option value="decToBin">Decimal to Binary</option>
+        <option value="binToDec">Binary to Decimal</option>
+        <option value="decToHex">Decimal to Hexadecimal</option>
+        <option value="hexToDec">Hexadecimal to Decimal</option>
+        <option value="binToOct">Binary to Octal</option>
+        <option value="octToBin">Octal to Binary</option>
+    </select>
+    <input type="text" id="inputNumber" placeholder="Enter number">
+    <button onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function convert() {
+        const conversionType = document.getElementById('conversionType').value;
+        const inputNumber = document.getElementById('inputNumber').value;
+        let result = '';
+
+        switch (conversionType) {
+            case 'decToBin':
+                result = parseInt(inputNumber, 10).toString(2);
+                break;
+            case 'binToDec':
+                result = parseInt(inputNumber, 2).toString(10);
+                break;
+            case 'decToHex':
+                result = parseInt(inputNumber, 10).toString(16).toUpperCase();
+                break;
+            case 'hexToDec':
+                result = parseInt(inputNumber, 16).toString(10);
+                break;
+            case 'binToOct':
+                result = parseInt(inputNumber, 2).toString(8);
+                break;
+            case 'octToBin':
+                result = parseInt(inputNumber, 8).toString(2);
+                break;
+            default:
+                result = 'Invalid conversion';
+        }
+
+        document.getElementById('result').innerHTML = `Result: ${result}`;
+    }
+</script>
+
+</body>
+</html>
